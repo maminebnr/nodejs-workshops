@@ -3,6 +3,9 @@ const user = require('./routes/user')
 //create instance of express
 const app = express();
 
+//create a middleware for parsing the content of body 
+app.use(express.json())
+
 app.use('/user',user)
 
 //http://localhost:9000/node/?name=glsi?firstname=node
