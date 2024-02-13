@@ -1,0 +1,8 @@
+on suppose on a un array de type objets avec un nom 
+voitures = [{id:1,name:"clio},{id:2,name:"megane"},{id:3,name:"range}]
+travail demandé :
+-creer un api pour ajouter une voiture au tableau voiture 
+-creer un api pour lister tous les voitues 
+-creer un api pour lister une voiture a traveres le parametre passer et un message not found s'il existe pas dans le tableau 
+-creer un api pour modifier une voiture avec un id specifique avec une verification (existe ou non )
+-creer un api pour supprimer une voiture avec un id specifiue avec une verification avant le supprimer 

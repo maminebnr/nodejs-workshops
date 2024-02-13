@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+router.post('/create', (req,res)=>{
+   console.log(req.body);
+});
 
 router.get('/', (req,res)=>{
    res.json({data:'hello user one '})

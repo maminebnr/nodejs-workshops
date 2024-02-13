@@ -2,6 +2,8 @@ const express = require('express')
 const app = express();
 const user = require('./routes/user')
 
+//middleware to parse the request body
+app.use(express.json());
 app.use('/user',user)
 app.get('/', (req, res) => {
     res.send('<h1>Welcome!</h1>');
@@ -15,6 +17,6 @@ app.get('/test', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 })
 //create a new server instance with the default 
-app.listen(5000,()=>{
-    console.log('server listening on port 5000')
+app.listen(9002,()=>{
+    console.log('server listening on port 9002')
 })
