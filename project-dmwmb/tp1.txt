@@ -1,0 +1,4 @@
+/auth/login return message with html 
+/auth/register return page html 
+/post/all return un array of object 
+/post/:id return the object with the id in the url 

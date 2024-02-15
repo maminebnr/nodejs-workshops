@@ -1,6 +1,7 @@
 const express = require('express');
 const category = require('./routes/category');
 const app = express();
+//middleware for parsing the body of the request
 app.use(express.json());
 
 app.use('/category',category);
