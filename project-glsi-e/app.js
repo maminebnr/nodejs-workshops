@@ -2,6 +2,11 @@ const express = require('express')
 const product = require('./routes/product')
 const app = express()
 
+//create a middleware for parsing the body of the request
+app.use(express.json())
+app.post('/create',(req,res)=>{
+  console.log(req.body)
+})
 app.use('/product', product)
 app.get('/template', (req, res) => {
     res.sendFile(__dirname+'/index.html')
