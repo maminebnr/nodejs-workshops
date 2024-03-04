@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 const auth = require('./routes/auth')
 const product = require('./routes/product')
 // instance from express 
@@ -38,6 +39,11 @@ app.get('/',(req,res)=>{
 
 
 //creation of the server instance 
+mongoose.connect('mongodb+srv://medaminebnr:azertyuiop@cluster0.he3afya.mongodb.net/?retryWrites=true&w=majority').then(()=>{
+console.log('connected to the database')    
 app.listen(9000,()=>{
-    console.log('Server is running on port 9000')
+        console.log('server is running on port 9000')
+    })
+}).catch(err=>{
+    console.log(err)
 })

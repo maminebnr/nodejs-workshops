@@ -24,6 +24,6 @@ Structure of 'restaurants' collection:
 3. Écrivez une requête MongoDB pour afficher les champs restaurant_id, nom, arrondissement et cuisine, mais excluez le champ _id pour tous les documents de la collection restaurant.
 4. Écrivez une requête MongoDB pour afficher les champs restaurant_id, nom, arrondissement et code postal, mais excluez le champ _id pour tous les documents de la collection restaurant.
 5. Écrivez une requête MongoDB pour afficher tous les restaurants qui se trouvent dans l'arrondissement du Bronx.
-6 . Écrivez une requête MongoDB pour afficher les 5 premiers restaurants de l'arrondissement du Bronx.
+6. Écrivez une requête MongoDB pour afficher les 5 premiers restaurants de l'arrondissement du Bronx.
 
 
