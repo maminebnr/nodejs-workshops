@@ -1,5 +1,6 @@
 const User = require('../models/user')
-
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 const register = async(username,password)=>{
 
@@ -13,4 +14,17 @@ const register = async(username,password)=>{
 
 }
 
-module.exports ={register}
+const login = async (username,password)=>{
+    const user = await User.findOne({username: username})
+    if(!user || ! bcrypt.compareSync(password,user.password) ){
+        throw new Error('invalid credentiels')
+
+    }
+    return generateToken(user._id)
+}
+
+const generateToken = (userId)=>{
+    return jwt.sign({userId},process.env.JWT_SECRET,{expiresIn:'1h'})
+}
+
+module.exports ={register,login}

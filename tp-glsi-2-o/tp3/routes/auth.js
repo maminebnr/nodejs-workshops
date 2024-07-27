@@ -13,5 +13,16 @@ router.post('/register',async (req,res)=>{
     }
 })
 
+router.post('/login',async(req,res)=>{
+    const {username,password}=req.body;
+    try {
+        const token = await authService.login(username,password)
+        res.send({token})
+    } catch (error) {
+        res.status(409).send({message:error.message})
+
+    }
+})
+
 
 module.exports = router

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv')
 const authRoutes = require('./routes/auth')
+const postRoutes = require('./routes/post')
 
 //enable config in app server 
 dotenv.config();
@@ -15,6 +16,8 @@ app.use(express.json())
 
 //enable routes of authentification
 app.use('/auth',authRoutes)
+app.use('/post',postRoutes)
+
 
 const MONGODB_URI = process.env.MONGODB_URI
 const PORT = process.env.PORT
