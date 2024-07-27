@@ -27,4 +27,25 @@ const deletePost = async (req) => {
     }
 }
 
-module.exports = { getAllPosts, createPost, deletePost }
+const updatePost = async (req) => {
+    try {
+        const { postId } = req.params
+        const { title, content } = req.body;
+        
+        const post = await Post.findByIdAndUpdate(postId, { title, content },{
+             new: true,
+             runValidators: true
+        })
+        if (!post) return {"message": "post not found", "status": 404}
+        return { "status": 200, message: "updated successfully", post }
+    } catch (error) {
+        return { message: error.message }
+    }
+}
+
+const getMyPosts = async (req) => {
+    const posts = Post.find({author: req.userId})
+    return posts
+}
+
+module.exports = { getAllPosts, createPost, deletePost, updatePost, getMyPosts }

@@ -28,6 +28,25 @@ router.delete("/:postId", async (req, res) => {
    }
 })
 
+router.patch("/:postId", async (req, res) => {
+   try {
+    const msg = await postService.updatePost(req)
+    res.status(msg.status).send
+    (msg)
+   } catch (error) {
+    res.status(409).send({message:error.message})
+   }
+})
+
+router.get("/myposts", authenticate, async (req, res) => {
+   try {
+      const posts = await postService.getMyPosts(req)
+      res.send(posts)
+     } catch (error) {
+      res.status(409).send({message:error.message})
+     }
+})
+
 
 
 
