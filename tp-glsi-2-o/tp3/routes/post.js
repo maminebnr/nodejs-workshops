@@ -13,7 +13,16 @@ router.post('/create',authenticate,async (req,res)=>{
 router.get('/all',async (req,res)=>{
    try {
     const posts = await postService.getAllPosts()
-   res.send(posts)
+    res.send(posts)
+   } catch (error) {
+    res.status(409).send({message:error.message})
+   }
+})
+
+router.delete("/:postId", async (req, res) => {
+   try {
+    const msg = await postService.deletePost(req)
+    res.status(200).send(msg)
    } catch (error) {
     res.status(409).send({message:error.message})
    }
