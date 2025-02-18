@@ -18,6 +18,15 @@ app.put('/api/todos/update/:id',(req,res)=>{
     res.status(201).send(todos)
 })
 
+app.delete('/api/todos/:id',(req,res)=>{
+    todos = todos.filter(todo =>{
+        return todo.id !== req.params.id
+    } )
+    res.status(201).send(todos)
+
+})
+
+
 app.get('/api/todos/all',(req,res)=>{
     res.send(todos)
 })
