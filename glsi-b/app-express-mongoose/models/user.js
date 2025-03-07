@@ -12,12 +12,10 @@ userSchema.pre('save',async function(next){
         this.password = await bcryptjs.hash(this.password,10)
     }
     next();
-
 })
 
 userSchema.methods.comparePassword = async function(userPassword){
     return bcryptjs.compare(userPassword,this.password)
-
 }
 
 module.exports = mongoose.model('User',userSchema)
