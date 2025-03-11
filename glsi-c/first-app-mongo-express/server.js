@@ -1,13 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config()
+const userRoutes = require('./routes/user.route')
 const app = express();
 
+app.use(express.json())
+
+app.use('/users',userRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
         .then(()=>{
          console.log('Connected to server database')
-         }).catch(err=>{
+         }).catch(err=>{ 
             console.log('Error connecting to server database',err)
          })
 
