@@ -6,6 +6,10 @@ const authentication =(req,res,next)=>{
             res.status(401).send({error:"not authorized"})
         }
         const decoded =jwt.verify(token.replace("Bearer ",""),process.env.SECRET_KEY)
+        if(!decoded){
+            res.status(401).send({error:"not authorized"})
+
+        }
         req.user = decoded
         next()
           

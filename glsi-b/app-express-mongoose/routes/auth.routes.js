@@ -1,6 +1,7 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
+const authentication = require('../middlewares/authMiddleware')
 const router =express.Router()
 
 router.post('/register',async(req,res)=>{
@@ -24,7 +25,6 @@ router.post('/login',async(req,res)=>{
     const isHavePassword = user.comparePassword(password)
     if(!isHavePassword){
         res.status(400).send({message:'invalid credentiels'})
-
     }
     const token = await jwt.sign({userId:user._id},process.env.SECRET_KEY)
     res.send({message:'user logged in successfully',token})
