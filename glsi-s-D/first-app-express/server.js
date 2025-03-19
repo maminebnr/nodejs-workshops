@@ -1,9 +1,12 @@
 const express = require('express');
+const todoRoutes = require('./routes/todo')
 const app = express();
 const users = [{id:1,title:"harry poter"},{id:2,title:"azerty"}]
 
 //middelware body parser
 app.use(express.json())
+
+app.use('/todos',todoRoutes)
 app.post('/create',(req,res)=>{
     const data = users.push(req.body)
     res.send(users)//accept all types of response

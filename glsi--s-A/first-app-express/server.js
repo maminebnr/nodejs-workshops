@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
-
+const mongoose = require('mongoose');
+const todoRoutes = require('./routes/todoRoutes')
 const users = [{id:1,name:'ali'},{id:2,name:'alex'}]
 
-app.use(express.json()) // middelware for parsing the body of request 
+app.use(express.json()) // middelware for parsing the body of request
+
+app.use('/todos',todoRoutes)
+
 app.post('/create',(req,res)=>{
     const data = req.body;
     users.push(data)

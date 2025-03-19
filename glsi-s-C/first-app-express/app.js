@@ -1,8 +1,20 @@
 const express = require('express');
+const todoRoutes = require('./router/todo')
 const app = express();
+
+app.use(express.json())
+
+app.use('/todo',todoRoutes);
 
 app.get('/file',(req,res)=>{
     res.sendFile(__dirname+'/public/index.html');
+})
+
+app.get('/:x/:y',(req,res)=>{
+    const x = Number(req.params.x)
+    const y = Number(req.params.y)
+    return x + y ;
+
 })
 app.get('/',(req,res)=>{
     res.send('welcome to my server expres')//accept all types of response
