@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users list</title>
+</head>
+<body>
+    <h2>list of registred users</h2>
+    <%if (users.length > 0) { %>
+      <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>email</th>
+                <th>age</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.age %></td>
+             <td> <a href="#">Edit</a> | <a href="#">Delete</a></td>
+            </tr>
+        <% } ); %>
+        </tbody>
+      </table>
+    <% } else {%> 
+    <p>No users found</p> <%} %>
+</body>
+</html>

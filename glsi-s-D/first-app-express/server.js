@@ -1,12 +1,25 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const todoRoutes = require('./routes/todo')
+const userRoutes = require('./routes/user')
+const postRoutes = require('./routes/post')
 const app = express();
 const users = [{id:1,title:"harry poter"},{id:2,title:"azerty"}]
 
 //middelware body parser
 app.use(express.json())
+app.set('view engine', 'ejs')
+
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+    console.log('connecting to database')
+}).catch(err=>{
+    console.log('error connecting to database',err)
+})
 
 app.use('/todos',todoRoutes)
+app.use('/user',userRoutes)
+app.use('/post',postRoutes)
+
 app.post('/create',(req,res)=>{
     const data = users.push(req.body)
     res.send(users)//accept all types of response
@@ -42,6 +55,7 @@ app.get('/test',(req,res)=>{
     const name = req.query.name
     res.status(200).send(`${name} ${age}`)
 })
-app.listen(9000,()=>{
+const PORT = process.env.PORT || 9000
+app.listen(PORT,()=>{
     console.log("server listening on port 9000");
 })
