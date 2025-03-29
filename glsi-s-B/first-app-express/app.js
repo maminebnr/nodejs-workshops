@@ -1,6 +1,7 @@
 const express = require('express');
 const todoRouter=require('./routes/todo')
 const userRouter = require('./routes/user');
+const postRouter = require('./routes/post');
 const mongoose = require('mongoose');
 const app = express()
 
@@ -11,8 +12,10 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 })
 const users = [{id:1,name:"ali"},{id:2,name:"fethi"}]
 app.use(express.json())
+app.set('view engine','ejs')
 app.use('/todo',todoRouter)
 app.use('/user',userRouter)
+app.use('/post',postRouter)
 
 app.get('/all',(req,res)=>{
     res.send(users)

@@ -23,5 +23,21 @@ exports.login = async (req,res)=>{
     }
     const token = jwt.sign({userId:user._id},process.env.SECRET_KEY,{expiresIn:'1d'})
     res.status(200).send({message:'user logged in successfully',token})
+}
 
+exports.me = async (req,res)=>{
+    try {
+        const user = await User.findById(req.user.userId).select('-password')
+        if(!user){
+            res.status(404).send({message:'User not found'})
+        }
+        res.send(user)
+    } catch (error) {
+        res.status(500).send({message:error.message})
+    }
+}
+
+exports.getAllUsers = async (req,res)=>{
+    const users = await User.find()
+    res.render('users',{users:users})
 }
