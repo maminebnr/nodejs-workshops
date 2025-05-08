@@ -2,9 +2,7 @@ import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { Todo } from 'src/todo/entities/todo.entity';
 
-export const typeormConfig = (
-  configService: ConfigService,
-): TypeOrmModuleOptions => ({
+export const typeormConfig = (configService: ConfigService): TypeOrmModuleOptions => ({
   type: 'mysql',
   host: configService.get('DB_HOST'),
   username: configService.get('DB_USER'),

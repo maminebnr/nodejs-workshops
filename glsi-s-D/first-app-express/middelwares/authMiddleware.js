@@ -9,6 +9,7 @@ const authentication = (req,res,next)=>{
     if(!token.startsWith('Bearer ')){
         res.status(401).send({message:'not authorized'})
     }
+    
     const decoded = jwt.verify(token.replace("Bearer ",""),process.env.JWT_SECRET)
     if(!decoded){
         res.status(401).send({message:'not authorized'})

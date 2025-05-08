@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeormConfig } from './config/typeorm.config';
 import { TodoModule } from './todo/todo.module';
+import { CatsModule } from './cats/cats.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TodoModule } from './todo/todo.module';
       useFactory: typeormConfig,
     }),
     TodoModule,
+    CatsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
